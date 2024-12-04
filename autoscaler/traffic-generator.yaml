@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hey-traffic-generator
+spec:
+  containers:
+  - name: hey
+    image: williamyeh/hey
+    args:
+    - "-z"
+    - "30s"               # Durata totale del test (30 secondi)
+    - "-c"
+    - "500"                # 50 connessioni simultanee
+    - "http://web-app-service.default.svc.cluster.local:80"  # URL del servizio
+  restartPolicy: Always
