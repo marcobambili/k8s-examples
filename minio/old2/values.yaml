@@ -1,0 +1,8 @@
+node:
+  extraEnvs:
+    - name: DISABLE_EXTERNAL_METADATA
+      value: "true"
+controller:
+  serviceAccount:
+    create: true # Assicurati che il service account venga creato
+    name: efs-csi-controller-sa # Nome del service account

@@ -1,0 +1,10 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: minio-sc
+provisioner: efs.csi.aws.com # il provisioner corretto
+parameters:
+  bucketName: data # Nome del bucket Minio
+  endpoint: http://192.168.1.99:9000 # Endpoint Minio
+  secretName: minio-credentials # Nome del Secret con le credenziali
+  secretNamespace: default # Namespace dove si trova il Secret

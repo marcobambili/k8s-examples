@@ -1,0 +1,12 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: flux-demo-repo
+  namespace: flux-system
+spec:
+  url: https://github.com/marcobambili/flux-demo.git
+  secretRef:
+    name: flux-demo-https-secret  # Il nome del segreto per HTTPS
+  ref:
+    branch: master  # Usa `ref` e specifica il ramo qui
+  interval: 1m

@@ -1,0 +1,4 @@
+Slpn9oyh1WRvu6LfhJwx
+01ETmvTmXUpn1xqSJdykO3Wrcpbjrn8TsHCPmKrn
+
+https://github.com/yandex-cloud/k8s-csi-s3

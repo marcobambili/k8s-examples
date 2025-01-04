@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: minio-pvc
+spec:
+  accessModes:
+    - ReadWriteMany # O ReadOnlyMany se solo lettura
+  resources:
+    requests:
+      storage: 1Gi # Dimensione del volume (non influisce su Minio)
+  storageClassName: minio-sc

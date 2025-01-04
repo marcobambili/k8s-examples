@@ -1,0 +1,13 @@
+storageClass:
+  create: true
+  name: s3-minio
+  mountOptions: # Opzioni di mount per GeeseFS (il filesystem utilizzato internamente)
+    - --memory-limit=1024 # Limite di memoria per GeeseFS
+    - --dir-mode=0777 # Permessi per le directory
+    - --file-mode=0666 # Permessi per i file
+secret:
+  create: true
+  name: s3-minio-secret
+  accessKey: "Slpn9oyh1WRvu6LfhJwx" # La tua access key di MinIO
+  secretKey: "01ETmvTmXUpn1xqSJdykO3Wrcpbjrn8TsHCPmKrn" # La tua secret key di MinIO
+  endpoint: "http://192.168.1.99:9000" # Endpoint del tuo MinIO.

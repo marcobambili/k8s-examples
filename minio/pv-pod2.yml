@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-minio-pvc2
+spec:
+  accessModes:
+    - ReadWriteMany # O ReadWriteOnce, a seconda delle tue esigenze
+  resources:
+    requests:
+      storage: 1Gi # Questo valore è irrilevante per S3, ma è richiesto da Kubernetes
+  storageClassName: data # Deve corrispondere al nome della StorageClass definita in values.yaml
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-minio-pod2
+spec:
+  containers:
+    - name: my-container
+      image: busybox
+      command: ["sh", "-c", "while true; do date >> /mnt/data/date.txt; sleep 5; done"]
+      volumeMounts:
+        - name: my-volume
+          mountPath: /mnt/data
+  volumes:
+    - name: my-volume
+      persistentVolumeClaim:
+        claimName: my-minio-pvc2

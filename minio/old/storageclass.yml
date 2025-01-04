@@ -1,0 +1,14 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: s3
+provisioner: ch.ctrox.csi.s3-driver
+parameters:
+  bucket: "data"
+  region: "eu-1"
+  endpoint: "http://192.168.1.99:9000"
+  insecure: "true"
+  csi.storage.k8s.io/provisioner-secret-name: s3-secret
+  csi.storage.k8s.io/provisioner-secret-namespace: default
+  csi.storage.k8s.io/node-publish-secret-name: s3-secret
+  csi.storage.k8s.io/node-publish-secret-namespace: default

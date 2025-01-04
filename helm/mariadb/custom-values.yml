@@ -1,0 +1,5 @@
+auth:
+    database: "test"
+    password: "testTestAB!"
+    username: "marco2"
+    rootPassword: "superPass123!"

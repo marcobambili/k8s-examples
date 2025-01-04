@@ -37,7 +37,7 @@ spec:
     targetPort: 80
   type: NodePort
 ---
-apiVersion: autoscaling/v2beta2
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: web-app-hpa
