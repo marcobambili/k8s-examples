@@ -93,5 +93,6 @@ spec:
           number: 8080
     timeout: 10s
     retries:
-      attempts: 2
-      perTryTimeout: 2s
+      attempts: 3  # Numero di tentativi di retry
+      perTryTimeout: 2s  # Timeout per ogni tentativo
+      retryOn: 5xx,gateway-error,connect-failure,retriable-4xx  # Condizioni per il retry
