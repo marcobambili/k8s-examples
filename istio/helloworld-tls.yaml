@@ -197,6 +197,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: hello
+  namespace: ns1
 spec:
   host: hello.ns1.svc.cluster.local
   # uncomment to enable mutual TLS
@@ -212,6 +213,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: hello-reverse
+  namespace: ns2
 spec:
   host: hello-reverse.legacy.svc.cluster.local
   # uncomment to enable mutual TLS

@@ -1,0 +1,31 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: hello
+  namespace: ns1
+spec:
+  host: hello.ns1.svc.cluster.local
+  # uncomment to enable mutual TLS
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+  subsets:
+  - name: v1-tls
+    labels:
+      version: v1-tls
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: hello-reverse
+  namespace: ns2
+spec:
+  host: hello-reverse.legacy.svc.cluster.local
+  # uncomment to enable mutual TLS
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+  subsets:
+  - name: v1-tls
+    labels:
+      version: v1-tls

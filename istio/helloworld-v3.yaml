@@ -53,7 +53,7 @@ spec:
         - name: TEXT
           value: hello, this is $(MY_POD_NAME)
         - name: LATENCY
-          value: "5"
+          value: "12"
         ports:
         - name: http
           containerPort: 8080

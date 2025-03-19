@@ -1,0 +1,113 @@
+# 1️⃣ ServiceEntry per permettere il traffico HTTP e HTTPS verso ifconfig.co e google.com
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: external-services
+spec:
+  hosts:
+  - ifconfig.co
+  - google.com   # Aggiunto google.com per permettere accesso a entrambi i domini
+  ports:
+  - number: 80
+    name: http
+    protocol: HTTP
+  - number: 443
+    name: tls
+    protocol: TLS
+  resolution: DNS
+  location: MESH_EXTERNAL
+
+---
+# 2️⃣ Gateway Egress per gestire il traffico HTTPS per tutti gli host esterni
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: egress-gateway
+spec:
+  selector:
+    istio: egressgateway
+  servers:
+  - port:
+      number: 443
+      name: https
+      protocol: TLS
+    hosts:
+    - "*"  # Tutti gli host esterni, come google.com e ifconfig.co
+    tls:
+      mode: PASSTHROUGH
+
+---
+# 3️⃣ VirtualService per forzare il traffico HTTPS a passare attraverso l'egress gateway
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: egress-traffic
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - egress-gateway
+  tls:
+  - match:
+      - port: 443
+        sniHosts:
+        - ifconfig.co
+        - google.com  # Aggiunto google.com come destinazione
+    route:
+      - destination:
+          host: ifconfig.co
+          port:
+            number: 443
+        weight: 50  # Assegno peso 50 per ifconfig.co
+      - destination:
+          host: google.com  # Aggiunto google.com come destinazione
+          port:
+            number: 443
+        weight: 50  # Assegno peso 50 per google.com
+
+---
+# 4️⃣ Deployment di un Pod con curl per testare la connessione a ifconfig.co e google.com
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: curl-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: curl-client
+  template:
+    metadata:
+      labels:
+        app: curl-client
+    spec:
+      containers:
+      - name: curl
+        image: curlimages/curl:latest
+        command: ["/bin/sh", "-c"]
+        args:
+        - |
+          while true; do
+            echo "Calling ifconfig.co"
+            curl -s https://ifconfig.co;
+            echo "\nCalling google.com"
+            curl -s https://google.com;
+            sleep 10;
+          done;
+
+---
+
+
+---
+# 6️⃣ Service per esporre il Pod (opzionale, solo per debug)
+apiVersion: v1
+kind: Service
+metadata:
+  name: curl-client
+spec:
+  selector:
+    app: curl-client
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jwt-issuer
+  labels:
+    app: jwt-issuer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jwt-issuer
+  template:
+    metadata:
+      labels:
+        app: jwt-issuer
+    spec:
+      containers:
+      - name: jwt-issuer
+        image: 01bit/jwt-issuer:v6
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jwt-issuer
+spec:
+  selector:
+    app: jwt-issuer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
