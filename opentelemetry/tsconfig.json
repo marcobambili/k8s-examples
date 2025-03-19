@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+      "module": "commonjs", // o "esnext" se usi ES Modules
+      "target": "ES2020",
+      "esModuleInterop": true, // Abilita l'interoperabilità tra CommonJS ed ES Modules
+      "strict": true,
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "skipLibCheck": true
+    }
+  }

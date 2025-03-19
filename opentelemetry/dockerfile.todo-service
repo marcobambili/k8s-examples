@@ -1,0 +1,11 @@
+FROM node:16.13.2
+
+WORKDIR /usr/src/app
+
+COPY package.json yarn.lock ./
+
+RUN yarn install --frozen-lockfile  # Ensures all dependencies, including dev, are installed
+
+EXPOSE 8080
+
+CMD ["yarn","todo"]

@@ -1,0 +1,6 @@
+apiVersion: example.com/v1
+kind: StaticPage
+metadata:
+  name: my-static-page
+spec:
+  content: "<h1>Benvenuto nella mia pagina statica!</h1>"

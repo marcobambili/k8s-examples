@@ -1,0 +1,52 @@
+# elasticsearch.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elasticsearch
+  namespace: logging
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: elasticsearch
+  template:
+    metadata:
+      labels:
+        app: elasticsearch
+    spec:
+      securityContext:  # Definisci securityContext a livello di pod
+        fsGroup: 1000    # Imposta il gruppo per i volumi montati
+      containers:
+      - name: elasticsearch
+        image: docker.elastic.co/elasticsearch/elasticsearch:7.10.2
+        ports:
+        - containerPort: 9200
+        env:
+        - name: discovery.type
+          value: "single-node"
+        - name: ES_JAVA_OPTS
+          value: "-Xms2g -Xmx2g"  # Configura la memoria JVM tra 2GB e 2GB
+        - name: bootstrap.memory_lock
+          value: "false"  # Disabilita il lock della memoria per risparmiare risorse
+        resources:
+          limits:
+            memory: "4Gi"  # Limite massimo di memoria a 4GB
+            cpu: "1"       # Limite massimo di CPU a 1 core
+          requests:
+            memory: "2Gi"  # Richiesta minima di memoria a 2GB
+            cpu: "500m"    # Richiesta minima di CPU a 500m (0.5 core)
+        securityContext:
+          runAsUser: 1000  # UID consigliato per Elasticsearch
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch
+  namespace: logging
+spec:
+  type: ClusterIP
+  ports:
+  - port: 9200
+    targetPort: 9200
+  selector:
+    app: elasticsearch

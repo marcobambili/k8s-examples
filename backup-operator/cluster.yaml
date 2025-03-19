@@ -1,0 +1,19 @@
+
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: my-db-cluster
+spec:
+  teamId: "myteam"
+  numberOfInstances: 2
+  volume:
+    size: 10Gi
+  users:
+    myuser:
+    - superuser
+    - createdb
+  databases:
+    mydb: myuser
+  postgresql:
+    version: "15"
+  enableLogicalBackup: true

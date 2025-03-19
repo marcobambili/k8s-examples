@@ -1,0 +1,19 @@
+configLogicalBackup:
+  
+  logical_backup_provider: "s3"
+  # S3 Access Key ID
+  logical_backup_s3_access_key_id: "ID"
+  # S3 bucket to store backup results
+  logical_backup_s3_bucket: "mabali"
+  # S3 bucket prefix to use
+  
+  # S3 region of bucket
+  logical_backup_s3_region: "eu-central-1"
+  # S3 endpoint url when not using AWS
+  logical_backup_s3_endpoint:  "https://s3.eu-central-1.amazonaws.com"
+  # S3 Secret Access Key
+  logical_backup_s3_secret_access_key: "KEY"
+  # S3 server side encryption
+  #logical_backup_s3_sse: "AES256"
+  #logical_backup_s3_retention_time: "7 days"
+  logical_backup_schedule: "30 00 * * *"

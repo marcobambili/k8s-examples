@@ -1,0 +1,23 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: admin-cluster-role
+rules:
+- apiGroups: ["*"]  # Tutti gli API groups
+  resources: ["*"]  # Tutte le risorse
+  verbs: ["*"]      # Tutte le azioni (create, update, delete, get, list, etc.)
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-cluster-binding
+subjects:
+- kind: User
+  name: "https://dev-nmpils1ozfuflquk.us.auth0.com/#google-oauth2|108296336448018911673"
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: admin-cluster-role
+  apiGroup: rbac.authorization.k8s.io
