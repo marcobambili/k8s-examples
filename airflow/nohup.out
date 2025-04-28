@@ -1,0 +1,133 @@
+  ____________       _____________
+ ____    |__( )_________  __/__  /________      __
+____  /| |_  /__  ___/_  /_ __  /_  __ \_ | /| / /
+___  ___ |  / _  /   _  __/ _  / / /_/ /_ |/ |/ /
+ _/_/  |_/_/  /_/    /_/    /_/  \____/____/|__/
+[2025-03-31T22:57:46.555+0200] {executor_loader.py:258} INFO - Loaded executor: SequentialExecutor
+[2025-03-31T22:57:46.922+0200] {scheduler_job_runner.py:950} INFO - Starting the scheduler
+[2025-03-31T22:57:46.922+0200] {scheduler_job_runner.py:957} INFO - Processing each file at most -1 times
+[2025-03-31T22:57:46.929+0200] {manager.py:174} INFO - Launched DagFileProcessorManager with pid: 24257
+[2025-03-31T22:57:46.930+0200] {scheduler_job_runner.py:1949} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-03-31 22:57:48 +0200] [24256] [INFO] Starting gunicorn 23.0.0
+[2025-03-31 22:57:48 +0200] [24256] [INFO] Listening at: http://[::]:8793 (24256)
+[2025-03-31 22:57:48 +0200] [24256] [INFO] Using worker: sync
+[2025-03-31 22:57:48 +0200] [24260] [INFO] Booting worker with pid: 24260
+[2025-03-31T22:57:48.246+0200] {settings.py:63} INFO - Configured default timezone UTC
+[2025-03-31T22:57:48.268+0200] {manager.py:406} WARNING - Because we cannot use more than 1 thread (parsing_processes = 2) when using sqlite. So we set parallelism to 1.
+[2025-03-31 22:57:48 +0200] [24269] [INFO] Booting worker with pid: 24269
+[2025-03-31T22:57:50.276+0200] {dag.py:4180} INFO - Setting next_dagrun for example_skip_dag to 2025-03-30 00:00:00+00:00, run_after=2025-03-31 00:00:00+00:00
+Dag run  in running state
+Dag information Queued at: 2025-03-31 20:57:50.265443+00:00 hash info: bc5de71c49e0ca236689f5579539d1a4
+[2025-03-31T22:57:50.302+0200] {scheduler_job_runner.py:435} INFO - 2 tasks up for execution:
+	<TaskInstance: example_skip_dag.skip_operator_1 scheduled__2025-03-26T00:00:00+00:00 [scheduled]>
+	<TaskInstance: example_skip_dag.skip_operator_2 scheduled__2025-03-26T00:00:00+00:00 [scheduled]>
+[2025-03-31T22:57:50.303+0200] {scheduler_job_runner.py:507} INFO - DAG example_skip_dag has 0/16 running and queued tasks
+[2025-03-31T22:57:50.303+0200] {scheduler_job_runner.py:507} INFO - DAG example_skip_dag has 1/16 running and queued tasks
+[2025-03-31T22:57:50.303+0200] {scheduler_job_runner.py:646} INFO - Setting the following tasks to queued state:
+	<TaskInstance: example_skip_dag.skip_operator_1 scheduled__2025-03-26T00:00:00+00:00 [scheduled]>
+	<TaskInstance: example_skip_dag.skip_operator_2 scheduled__2025-03-26T00:00:00+00:00 [scheduled]>
+[2025-03-31T22:57:50.304+0200] {scheduler_job_runner.py:748} INFO - Trying to enqueue tasks: [<TaskInstance: example_skip_dag.skip_operator_1 scheduled__2025-03-26T00:00:00+00:00 [scheduled]>, <TaskInstance: example_skip_dag.skip_operator_2 scheduled__2025-03-26T00:00:00+00:00 [scheduled]>] for executor: SequentialExecutor(parallelism=32)
+[2025-03-31T22:57:50.304+0200] {scheduler_job_runner.py:692} INFO - Sending TaskInstanceKey(dag_id='example_skip_dag', task_id='skip_operator_1', run_id='scheduled__2025-03-26T00:00:00+00:00', try_number=1, map_index=-1) to SequentialExecutor with priority 3 and queue default
+[2025-03-31T22:57:50.304+0200] {base_executor.py:169} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'example_skip_dag', 'skip_operator_1', 'scheduled__2025-03-26T00:00:00+00:00', '--local', '--subdir', '/Users/marcobambili/kubernetes/k8s-examples/airflow/airflow_env/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py']
+[2025-03-31T22:57:50.305+0200] {scheduler_job_runner.py:692} INFO - Sending TaskInstanceKey(dag_id='example_skip_dag', task_id='skip_operator_2', run_id='scheduled__2025-03-26T00:00:00+00:00', try_number=1, map_index=-1) to SequentialExecutor with priority 3 and queue default
+[2025-03-31T22:57:50.305+0200] {base_executor.py:169} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'example_skip_dag', 'skip_operator_2', 'scheduled__2025-03-26T00:00:00+00:00', '--local', '--subdir', '/Users/marcobambili/kubernetes/k8s-examples/airflow/airflow_env/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py']
+[2025-03-31T22:57:50.305+0200] {sequential_executor.py:84} INFO - Executing command: ['airflow', 'tasks', 'run', 'example_skip_dag', 'skip_operator_1', 'scheduled__2025-03-26T00:00:00+00:00', '--local', '--subdir', '/Users/marcobambili/kubernetes/k8s-examples/airflow/airflow_env/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py']
+[2025-03-31T22:57:52.066+0200] {dagbag.py:588} INFO - Filling up the DagBag from /Users/marcobambili/kubernetes/k8s-examples/airflow/airflow_env/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py
+[2025-03-31T22:57:52.160+0200] {example_local_kubernetes_executor.py:40} WARNING - Could not import DAGs in example_local_kubernetes_executor.py
+Traceback (most recent call last):
+  File "/Users/marcobambili/kubernetes/k8s-examples/airflow/airflow_env/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 38, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[2025-03-31T22:57:52.160+0200] {example_local_kubernetes_executor.py:41} WARNING - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes]
+[2025-03-31T22:57:52.169+0200] {example_python_operator.py:93} WARNING - The virtalenv_python example task requires virtualenv, please install it.
+[2025-03-31T22:57:52.169+0200] {tutorial_taskflow_api_virtualenv.py:29} WARNING - The tutorial_taskflow_api_virtualenv example DAG requires virtualenv, please install it.
+[2025-03-31T22:57:52.757+0200] {example_python_decorator.py:80} WARNING - The virtalenv_python example task requires virtualenv, please install it.
+[2025-03-31T22:57:52.901+0200] {example_kubernetes_executor.py:39} WARNING - The example_kubernetes_executor example DAG requires the kubernetes provider. Please install it with: pip install apache-airflow[cncf.kubernetes]
+[2025-03-31T22:57:52.972+0200] {task_command.py:467} INFO - Running <TaskInstance: example_skip_dag.skip_operator_1 scheduled__2025-03-26T00:00:00+00:00 [queued]> on host macos-2whkjkj29.local
+[2025-03-31T22:57:54.571+0200] {sequential_executor.py:84} INFO - Executing command: ['airflow', 'tasks', 'run', 'example_skip_dag', 'skip_operator_2', 'scheduled__2025-03-26T00:00:00+00:00', '--local', '--subdir', '/Users/marcobambili/kubernetes/k8s-examples/airflow/airflow_env/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py']
+[2025-03-31T22:57:56.367+0200] {dagbag.py:588} INFO - Filling up the DagBag from /Users/marcobambili/kubernetes/k8s-examples/airflow/airflow_env/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py
+[2025-03-31T22:57:56.429+0200] {example_local_kubernetes_executor.py:40} WARNING - Could not import DAGs in example_local_kubernetes_executor.py
+Traceback (most recent call last):
+  File "/Users/marcobambili/kubernetes/k8s-examples/airflow/airflow_env/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 38, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[2025-03-31T22:57:56.430+0200] {example_local_kubernetes_executor.py:41} WARNING - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes]
+[2025-03-31T22:57:56.438+0200] {example_python_operator.py:93} WARNING - The virtalenv_python example task requires virtualenv, please install it.
+[2025-03-31T22:57:56.439+0200] {tutorial_taskflow_api_virtualenv.py:29} WARNING - The tutorial_taskflow_api_virtualenv example DAG requires virtualenv, please install it.
+[2025-03-31T22:57:56.936+0200] {example_python_decorator.py:80} WARNING - The virtalenv_python example task requires virtualenv, please install it.
+[2025-03-31T22:57:57.034+0200] {example_kubernetes_executor.py:39} WARNING - The example_kubernetes_executor example DAG requires the kubernetes provider. Please install it with: pip install apache-airflow[cncf.kubernetes]
+[2025-03-31T22:57:57.086+0200] {task_command.py:467} INFO - Running <TaskInstance: example_skip_dag.skip_operator_2 scheduled__2025-03-26T00:00:00+00:00 [queued]> on host macos-2whkjkj29.local
+[2025-03-31T22:57:57.559+0200] {scheduler_job_runner.py:776} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='example_skip_dag', task_id='skip_operator_1', run_id='scheduled__2025-03-26T00:00:00+00:00', try_number=1, map_index=-1)
+[2025-03-31T22:57:57.560+0200] {scheduler_job_runner.py:776} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='example_skip_dag', task_id='skip_operator_2', run_id='scheduled__2025-03-26T00:00:00+00:00', try_number=1, map_index=-1)
+[2025-03-31T22:57:57.566+0200] {scheduler_job_runner.py:813} INFO - TaskInstance Finished: dag_id=example_skip_dag, task_id=skip_operator_1, run_id=scheduled__2025-03-26T00:00:00+00:00, map_index=-1, run_start_date=2025-03-31 20:57:53.060398+00:00, run_end_date=2025-03-31 20:57:53.145703+00:00, run_duration=0.085305, state=skipped, executor=SequentialExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=0, job_id=14, pool=default_pool, queue=default, priority_weight=3, operator=EmptySkipOperator, queued_dttm=2025-03-31 20:57:50.303628+00:00, queued_by_job_id=13, pid=24314
+[2025-03-31T22:57:57.566+0200] {scheduler_job_runner.py:813} INFO - TaskInstance Finished: dag_id=example_skip_dag, task_id=skip_operator_2, run_id=scheduled__2025-03-26T00:00:00+00:00, map_index=-1, run_start_date=2025-03-31 20:57:57.169675+00:00, run_end_date=2025-03-31 20:57:57.250988+00:00, run_duration=0.081313, state=skipped, executor=SequentialExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=0, job_id=15, pool=default_pool, queue=default, priority_weight=3, operator=EmptySkipOperator, queued_dttm=2025-03-31 20:57:50.303628+00:00, queued_by_job_id=13, pid=24352
+[2025-03-31T22:57:59.559+0200] {dag.py:4180} INFO - Setting next_dagrun for example_skip_dag to 2025-03-31 00:00:00+00:00, run_after=2025-04-01 00:00:00+00:00
+Dag run  in running state
+Dag information Queued at: 2025-03-31 20:57:59.556817+00:00 hash info: bc5de71c49e0ca236689f5579539d1a4
+[2025-03-31T22:57:59.579+0200] {scheduler_job_runner.py:435} INFO - 2 tasks up for execution:
+	<TaskInstance: example_skip_dag.skip_operator_1 scheduled__2025-03-30T00:00:00+00:00 [scheduled]>
+	<TaskInstance: example_skip_dag.skip_operator_2 scheduled__2025-03-30T00:00:00+00:00 [scheduled]>
+[2025-03-31T22:57:59.579+0200] {scheduler_job_runner.py:507} INFO - DAG example_skip_dag has 0/16 running and queued tasks
+[2025-03-31T22:57:59.579+0200] {scheduler_job_runner.py:507} INFO - DAG example_skip_dag has 1/16 running and queued tasks
+[2025-03-31T22:57:59.579+0200] {scheduler_job_runner.py:646} INFO - Setting the following tasks to queued state:
+	<TaskInstance: example_skip_dag.skip_operator_1 scheduled__2025-03-30T00:00:00+00:00 [scheduled]>
+	<TaskInstance: example_skip_dag.skip_operator_2 scheduled__2025-03-30T00:00:00+00:00 [scheduled]>
+[2025-03-31T22:57:59.581+0200] {scheduler_job_runner.py:748} INFO - Trying to enqueue tasks: [<TaskInstance: example_skip_dag.skip_operator_1 scheduled__2025-03-30T00:00:00+00:00 [scheduled]>, <TaskInstance: example_skip_dag.skip_operator_2 scheduled__2025-03-30T00:00:00+00:00 [scheduled]>] for executor: SequentialExecutor(parallelism=32)
+[2025-03-31T22:57:59.582+0200] {scheduler_job_runner.py:692} INFO - Sending TaskInstanceKey(dag_id='example_skip_dag', task_id='skip_operator_1', run_id='scheduled__2025-03-30T00:00:00+00:00', try_number=1, map_index=-1) to SequentialExecutor with priority 3 and queue default
+[2025-03-31T22:57:59.582+0200] {base_executor.py:169} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'example_skip_dag', 'skip_operator_1', 'scheduled__2025-03-30T00:00:00+00:00', '--local', '--subdir', '/Users/marcobambili/kubernetes/k8s-examples/airflow/airflow_env/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py']
+[2025-03-31T22:57:59.582+0200] {scheduler_job_runner.py:692} INFO - Sending TaskInstanceKey(dag_id='example_skip_dag', task_id='skip_operator_2', run_id='scheduled__2025-03-30T00:00:00+00:00', try_number=1, map_index=-1) to SequentialExecutor with priority 3 and queue default
+[2025-03-31T22:57:59.582+0200] {base_executor.py:169} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'example_skip_dag', 'skip_operator_2', 'scheduled__2025-03-30T00:00:00+00:00', '--local', '--subdir', '/Users/marcobambili/kubernetes/k8s-examples/airflow/airflow_env/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py']
+[2025-03-31T22:57:59.583+0200] {sequential_executor.py:84} INFO - Executing command: ['airflow', 'tasks', 'run', 'example_skip_dag', 'skip_operator_1', 'scheduled__2025-03-30T00:00:00+00:00', '--local', '--subdir', '/Users/marcobambili/kubernetes/k8s-examples/airflow/airflow_env/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py']
+[2025-03-31T22:58:01.442+0200] {dagbag.py:588} INFO - Filling up the DagBag from /Users/marcobambili/kubernetes/k8s-examples/airflow/airflow_env/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py
+[2025-03-31T22:58:01.501+0200] {example_local_kubernetes_executor.py:40} WARNING - Could not import DAGs in example_local_kubernetes_executor.py
+Traceback (most recent call last):
+  File "/Users/marcobambili/kubernetes/k8s-examples/airflow/airflow_env/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 38, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[2025-03-31T22:58:01.501+0200] {example_local_kubernetes_executor.py:41} WARNING - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes]
+[2025-03-31T22:58:01.510+0200] {example_python_operator.py:93} WARNING - The virtalenv_python example task requires virtualenv, please install it.
+[2025-03-31T22:58:01.510+0200] {tutorial_taskflow_api_virtualenv.py:29} WARNING - The tutorial_taskflow_api_virtualenv example DAG requires virtualenv, please install it.
+[2025-03-31T22:58:01.908+0200] {example_python_decorator.py:80} WARNING - The virtalenv_python example task requires virtualenv, please install it.
+[2025-03-31T22:58:01.999+0200] {example_kubernetes_executor.py:39} WARNING - The example_kubernetes_executor example DAG requires the kubernetes provider. Please install it with: pip install apache-airflow[cncf.kubernetes]
+[2025-03-31T22:58:02.046+0200] {task_command.py:467} INFO - Running <TaskInstance: example_skip_dag.skip_operator_1 scheduled__2025-03-30T00:00:00+00:00 [queued]> on host macos-2whkjkj29.local
+[2025-03-31T22:58:02.508+0200] {sequential_executor.py:84} INFO - Executing command: ['airflow', 'tasks', 'run', 'example_skip_dag', 'skip_operator_2', 'scheduled__2025-03-30T00:00:00+00:00', '--local', '--subdir', '/Users/marcobambili/kubernetes/k8s-examples/airflow/airflow_env/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py']
+[2025-03-31T22:58:04.223+0200] {dagbag.py:588} INFO - Filling up the DagBag from /Users/marcobambili/kubernetes/k8s-examples/airflow/airflow_env/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py
+[2025-03-31T22:58:04.277+0200] {example_local_kubernetes_executor.py:40} WARNING - Could not import DAGs in example_local_kubernetes_executor.py
+Traceback (most recent call last):
+  File "/Users/marcobambili/kubernetes/k8s-examples/airflow/airflow_env/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 38, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[2025-03-31T22:58:04.277+0200] {example_local_kubernetes_executor.py:41} WARNING - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes]
+[2025-03-31T22:58:04.285+0200] {example_python_operator.py:93} WARNING - The virtalenv_python example task requires virtualenv, please install it.
+[2025-03-31T22:58:04.286+0200] {tutorial_taskflow_api_virtualenv.py:29} WARNING - The tutorial_taskflow_api_virtualenv example DAG requires virtualenv, please install it.
+[2025-03-31T22:58:04.641+0200] {example_python_decorator.py:80} WARNING - The virtalenv_python example task requires virtualenv, please install it.
+[2025-03-31T22:58:04.735+0200] {example_kubernetes_executor.py:39} WARNING - The example_kubernetes_executor example DAG requires the kubernetes provider. Please install it with: pip install apache-airflow[cncf.kubernetes]
+[2025-03-31T22:58:04.787+0200] {task_command.py:467} INFO - Running <TaskInstance: example_skip_dag.skip_operator_2 scheduled__2025-03-30T00:00:00+00:00 [queued]> on host macos-2whkjkj29.local
+[2025-03-31T22:58:05.304+0200] {scheduler_job_runner.py:776} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='example_skip_dag', task_id='skip_operator_1', run_id='scheduled__2025-03-30T00:00:00+00:00', try_number=1, map_index=-1)
+[2025-03-31T22:58:05.305+0200] {scheduler_job_runner.py:776} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='example_skip_dag', task_id='skip_operator_2', run_id='scheduled__2025-03-30T00:00:00+00:00', try_number=1, map_index=-1)
+[2025-03-31T22:58:05.308+0200] {scheduler_job_runner.py:813} INFO - TaskInstance Finished: dag_id=example_skip_dag, task_id=skip_operator_1, run_id=scheduled__2025-03-30T00:00:00+00:00, map_index=-1, run_start_date=2025-03-31 20:58:02.124499+00:00, run_end_date=2025-03-31 20:58:02.213271+00:00, run_duration=0.088772, state=skipped, executor=SequentialExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=0, job_id=16, pool=default_pool, queue=default, priority_weight=3, operator=EmptySkipOperator, queued_dttm=2025-03-31 20:57:59.580185+00:00, queued_by_job_id=13, pid=24391
+[2025-03-31T22:58:05.308+0200] {scheduler_job_runner.py:813} INFO - TaskInstance Finished: dag_id=example_skip_dag, task_id=skip_operator_2, run_id=scheduled__2025-03-30T00:00:00+00:00, map_index=-1, run_start_date=2025-03-31 20:58:04.909145+00:00, run_end_date=2025-03-31 20:58:04.999939+00:00, run_duration=0.090794, state=skipped, executor=SequentialExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=0, job_id=17, pool=default_pool, queue=default, priority_weight=3, operator=EmptySkipOperator, queued_dttm=2025-03-31 20:57:59.580185+00:00, queued_by_job_id=13, pid=24426
+[2025-03-31T22:58:08.959+0200] {dagrun.py:854} INFO - Marking run <DagRun example_skip_dag @ 2025-03-26 00:00:00+00:00: scheduled__2025-03-26T00:00:00+00:00, state:running, queued_at: 2025-03-31 20:57:50.265443+00:00. externally triggered: False> successful
+Dag run in success state
+Dag run start:2025-03-31 20:57:50.282895+00:00 end:2025-03-31 20:58:08.959879+00:00
+[2025-03-31T22:58:08.959+0200] {dagrun.py:905} INFO - DagRun Finished: dag_id=example_skip_dag, execution_date=2025-03-26 00:00:00+00:00, run_id=scheduled__2025-03-26T00:00:00+00:00, run_start_date=2025-03-31 20:57:50.282895+00:00, run_end_date=2025-03-31 20:58:08.959879+00:00, run_duration=18.676984, state=success, external_trigger=False, run_type=scheduled, data_interval_start=2025-03-26 00:00:00+00:00, data_interval_end=2025-03-27 00:00:00+00:00, dag_hash=bc5de71c49e0ca236689f5579539d1a4
+[2025-03-31T22:58:08.961+0200] {dag.py:4180} INFO - Setting next_dagrun for example_skip_dag to 2025-03-30 00:00:00+00:00, run_after=2025-03-31 00:00:00+00:00
+[2025-03-31T22:58:11.347+0200] {dag.py:4180} INFO - Setting next_dagrun for example_skip_dag to 2025-03-31 00:00:00+00:00, run_after=2025-04-01 00:00:00+00:00
+[2025-03-31T22:58:11.354+0200] {dagrun.py:854} INFO - Marking run <DagRun example_skip_dag @ 2025-03-30 00:00:00+00:00: scheduled__2025-03-30T00:00:00+00:00, state:running, queued_at: 2025-03-31 20:57:59.556817+00:00. externally triggered: False> successful
+Dag run in success state
+Dag run start:2025-03-31 20:57:59.563930+00:00 end:2025-03-31 20:58:11.354684+00:00
+[2025-03-31T22:58:11.354+0200] {dagrun.py:905} INFO - DagRun Finished: dag_id=example_skip_dag, execution_date=2025-03-30 00:00:00+00:00, run_id=scheduled__2025-03-30T00:00:00+00:00, run_start_date=2025-03-31 20:57:59.563930+00:00, run_end_date=2025-03-31 20:58:11.354684+00:00, run_duration=11.790754, state=success, external_trigger=False, run_type=scheduled, data_interval_start=2025-03-30 00:00:00+00:00, data_interval_end=2025-03-31 00:00:00+00:00, dag_hash=bc5de71c49e0ca236689f5579539d1a4
+[2025-03-31T22:58:11.355+0200] {dag.py:4180} INFO - Setting next_dagrun for example_skip_dag to 2025-03-31 00:00:00+00:00, run_after=2025-04-01 00:00:00+00:00
+[2025-03-31T23:02:47.284+0200] {scheduler_job_runner.py:1949} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-03-31T23:07:47.251+0200] {scheduler_job_runner.py:272} INFO - Exiting gracefully upon receiving signal 15
+[2025-03-31T23:07:48.262+0200] {process_utils.py:132} INFO - Sending Signals.SIGTERM to group 24257. PIDs of all processes in the group: [24257]
+[2025-03-31T23:07:48.262+0200] {process_utils.py:87} INFO - Sending the signal Signals.SIGTERM to group 24257
+[2025-03-31T23:07:48.564+0200] {process_utils.py:80} INFO - Process psutil.Process(pid=24257, status='terminated', exitcode=0, started='22:57:46') (24257) terminated with exit code 0
+[2025-03-31T23:07:48.572+0200] {process_utils.py:132} INFO - Sending Signals.SIGTERM to group 24257. PIDs of all processes in the group: []
+[2025-03-31T23:07:48.572+0200] {process_utils.py:87} INFO - Sending the signal Signals.SIGTERM to group 24257
+[2025-03-31T23:07:48.572+0200] {process_utils.py:101} INFO - Sending the signal Signals.SIGTERM to process 24257 as process group is missing.
+[2025-03-31T23:07:48.572+0200] {scheduler_job_runner.py:1029} INFO - Exited execute loop
+[2025-03-31 23:07:48 +0200] [24256] [INFO] Handling signal: term
+[2025-03-31 23:07:48 +0200] [24260] [INFO] Worker exiting (pid: 24260)
+[2025-03-31 23:07:48 +0200] [24269] [INFO] Worker exiting (pid: 24269)
+[2025-03-31 23:07:48 +0200] [24256] [INFO] Shutting down: Master
